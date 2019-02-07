@@ -3,18 +3,17 @@
 namespace App\Tests;
 
 use App\Entity\Isle;
+use App\Entity\Map;
 use PHPUnit\Framework\TestCase;
 
 class MapTest extends TestCase
 {
-    public function testHasIslands()
+    public function testTwoIslandsAreConnected()
     {
+        // Un pont ne peut être posé que si
+        // une liaison existe entre deux iles
         $map = new Map();
 
-        $map->addIsland(new Isle('aloa'));
-        $map->addIsland(new Isle('duda'));
-        $map->addIsland(new Isle('iffi'));
-        $map->addIsland(new Isle('huna'));
-        
+        $this->assertTrue($map->islandsAreConnected('aloa', 'duda'));
     }
 }
